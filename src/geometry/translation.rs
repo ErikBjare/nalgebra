@@ -16,6 +16,8 @@ pub type OwnedTranslation<N, D, S> = TranslationBase<N, D, Owned<N, D, U1, <S as
 #[repr(C)]
 #[derive(Hash, Debug, Clone, Copy)]
 pub struct TranslationBase<N: Scalar, D: DimName, S/*: Storage<N, D, U1>*/> {
+    /// The translation coordinates, i.e., how much is added to a point's coordinates when it is
+    /// translated.
     pub vector: ColumnVector<N, D, S>
 }
 

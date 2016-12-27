@@ -16,7 +16,7 @@ pub type OwnedRotation<N, D, A> = RotationBase<N, D, <A as Allocator<N, D, D>>::
 /// A rotation matrix.
 #[repr(C)]
 #[derive(Hash, Debug, Clone, Copy)]
-pub struct RotationBase<N: Scalar, D: DimName, S: Storage<N, D, D>> {
+pub struct RotationBase<N: Scalar, D: DimName, S> {
     matrix: SquareMatrix<N, D, S>
 }
 

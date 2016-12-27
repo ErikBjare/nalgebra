@@ -5,7 +5,6 @@ use core::dimension::{Dim, DimName, Dynamic, U1};
 use core::storage::{Storage, StorageMut, Owned, OwnedStorage};
 use core::default_allocator::DefaultAllocator;
 
-
 /*
  *
  * Storage.
@@ -21,8 +20,10 @@ pub struct MatrixVec<N, R: Dim, C: Dim> {
 }
 
 impl<N, R: Dim, C: Dim> MatrixVec<N, R, C> {
+    /// Creates a new dynamic matrix data storage from the given vector and shape.
     #[inline]
     pub fn new(nrows: R, ncols: C, data: Vec<N>) -> MatrixVec<N, R, C> {
+        assert!(nrows.value() * ncols.value() == data.len(), "Data storage buffer dimension mismatch.");
         MatrixVec {
             data:   data,
             nrows:  nrows,

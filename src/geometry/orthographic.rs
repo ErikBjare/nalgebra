@@ -25,9 +25,7 @@ impl<N, S> Eq for OrthographicBase<N, S>
     where N: Scalar + Eq,
           S: Storage<N, U4, U4> { }
 
-impl<N, S> PartialEq for OrthographicBase<N, S>
-    where N: Scalar,
-          S: Storage<N, U4, U4> {
+impl<N: Scalar, S: Storage<N, U4, U4>> PartialEq for OrthographicBase<N, S> {
     #[inline]
     fn eq(&self, right: &Self) -> bool {
         self.matrix == right.matrix
@@ -80,10 +78,7 @@ impl<N, S> OrthographicBase<N, S>
     }
 }
 
-impl<N, S> OrthographicBase<N, S>
-    where N: Real,
-          S: Storage<N, U4, U4> {
-
+impl<N: Real, S: Storage<N, U4, U4>> OrthographicBase<N, S> {
     /// A reference to the underlying homogeneous transformation matrix.
     #[inline]
     pub fn as_matrix(&self) -> &SquareMatrix<N, U4, S> {
@@ -165,9 +160,7 @@ impl<N, S> OrthographicBase<N, S>
     }
 }
 
-impl<N, S> OrthographicBase<N, S>
-    where N: Real,
-          S: StorageMut<N, U4, U4> {
+impl<N: Real, S: StorageMut<N, U4, U4>> OrthographicBase<N, S> {
     /// Sets the smallest x-coordinate of the view cuboid.
     #[inline]
     pub fn set_left(&mut self, left: N) {
